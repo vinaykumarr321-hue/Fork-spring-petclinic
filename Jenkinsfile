@@ -2,7 +2,7 @@ pipeline {
   agent any
   environment {
     APP_NAME = "spring-petclinic"
-    DEV_TEAM = 'akshatha.1si20et003@gmail.com'
+    DEV_TEAM = 'mashwini.h015@gmail.com'
     BUILD_INFO = "Job_Name: ${env.JOB_NAME}\nBuild_Number: ${env.BUILD_NUMBER}"
   }
   tools {
@@ -12,19 +12,19 @@ pipeline {
   stages {
         stage('Git Clone') {
             steps {
-                git branch: 'main', url: 'https://github.com/Akshathabm786/Fork-spring-petclinic.git'
+                git branch: 'main', url: 'https://github.com/vinaykumarr321-hue/Fork-spring-petclinic.git'
             }
         }
         stage('Package') {
             steps {
-                sh 'mvn package'
+                bat 'mvn package'
               archiveArtifacts artifacts:'target/*.jar', fingerprint:true
             }
         }
   }
   post {
         success {
-            mail to: 'akshatha.1si20et003@gmail.com',
+            mail to: 'mashwini.h015@gmail.com',
                 cc: "${env.DEV_TEAM}",
                 subject: "Jenkins Build Success: ${env.JOB_NAME}",
                 body: """
@@ -42,7 +42,7 @@ pipeline {
                         """
         }
         failure {
-            mail to: 'akshatha.1si20et003@gmail.com',
+            mail to: 'mashwini.h015@gmail.com',
                 cc: "${env.DEV_TEAM}",
                 subject: "Jenkins Build Failed: ${env.JOB_NAME}",
                 body: """
