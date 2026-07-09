@@ -6,8 +6,8 @@ pipeline {
     BUILD_INFO = "Job_Name: ${env.JOB_NAME}\nBuild_Number: ${env.BUILD_NUMBER}"
   }
   tools {
-    jdk 'java-home-21'
-        maven 'Maven-home'
+    jdk 'java-home-25'
+    maven 'Maven-home'
   }
   stages {
         stage('Git Clone') {
